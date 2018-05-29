@@ -2,10 +2,13 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
-    res.send("omg hai");
+
+app.get('/api/message', (req, res) => {
+    console.log("get: /api/message");
+    res.setHeader("Content-Type", "application/json");
+    res.send('{"message": "hi"}');
 });
 
 app.listen(port);

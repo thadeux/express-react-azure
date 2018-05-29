@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import * as actionCreators from './actions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 class App extends Component {
   render() {
@@ -11,11 +14,18 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Your message : {this.props.msg}
         </p>
       </div>
     );
   }
+
+  componentDidMount () {
+    this.props.fetchMsg();
+  }
 }
 
-export default App;
+export default connect(
+  state => ({ msg: state.messages.message }),
+  dispatch => bindActionCreators(actionCreators, dispatch)
+)(App);
