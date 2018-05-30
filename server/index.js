@@ -5,6 +5,8 @@ var path = require('path');
 var port = process.env.PORT || 3001;
 
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get('/api/message', (req, res) => {
     console.log("get: /api/message");
     res.setHeader("Content-Type", "application/json");
