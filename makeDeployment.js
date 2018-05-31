@@ -20,6 +20,10 @@ const serverFiles = [
         dest: deployDir + "/package.json"
     },
     {
+        src: serverDir + "/process.json",
+        dest: deployDir + "/process.json"
+    },
+    {
         src: serverDir + "/web.config",
         dest: deployDir + "/web.config"
     }
